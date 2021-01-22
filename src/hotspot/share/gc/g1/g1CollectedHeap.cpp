@@ -826,7 +826,7 @@ void G1CollectedHeap::dealloc_archive_regions(MemRegion* ranges, size_t count, b
 
 oop G1CollectedHeap::materialize_archived_object(oop obj) {
   assert(obj != NULL, "archived obj is NULL");
-  assert(MetaspaceShared::is_archive_object(obj), "must be archived object");
+  assert(G1ArchiveAllocator::is_archived_object(obj), "must be archived object");
 
   // Loading an archived object makes it strongly reachable. If it is
   // loaded during concurrent marking, it must be enqueued to the SATB
